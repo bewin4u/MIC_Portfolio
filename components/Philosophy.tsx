@@ -53,16 +53,12 @@ const Philosophy: React.FC = () => {
             <div className="relative z-10 rounded-2xl overflow-hidden border border-zinc-800 bg-card shadow-2xl p-2">
                <div className="rounded-xl overflow-hidden relative">
                  {/* 
-                   IMPORTANT: Ensure a file named 'philosophy.jpg' exists in your public directory.
+                   IMPORTANT: Ensure a file named 'philosophy.jpg' exists in the 'components' directory.
                  */}
                  <img 
-                   src="/philosophy.jpg" 
+                   src="/components/philosophy.jpg" 
                    alt="Michael Presentation" 
                    className="w-full h-auto object-cover filter hover:brightness-110 transition-all duration-700"
-                   onError={(e) => {
-                    // Fallback if image is missing
-                    e.currentTarget.src = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=2774&auto=format&fit=crop";
-                  }}
                  />
                  <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent opacity-90"></div>
                  

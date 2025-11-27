@@ -1,9 +1,26 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, MapPin } from 'lucide-react';
+import { ArrowRight, Linkedin, MapPin } from 'lucide-react';
 import { HERO_DATA } from '../constants';
 
 const Hero: React.FC = () => {
+  const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = contactSection.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-dark pt-20">
       {/* Background decoration */}
@@ -33,16 +50,31 @@ const Hero: React.FC = () => {
              <span className="uppercase tracking-wide text-xs font-bold">{HERO_DATA.location}</span>
           </div>
           
-          <h2 className="text-2xl md:text-3xl text-zinc-200 font-light mb-6">
-            {HERO_DATA.role}
-          </h2>
+          <div className="flex items-center gap-4 mb-6">
+            <h2 className="text-2xl md:text-3xl text-zinc-200 font-light">
+              {HERO_DATA.role}
+            </h2>
+            <a
+              href="https://www.linkedin.com/in/micdavid4u/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View Michael's LinkedIn Profile"
+              className="group bg-card p-2.5 rounded-full border border-zinc-800 hover:border-primary transition-all duration-300"
+            >
+              <Linkedin className="w-5 h-5 text-zinc-400 group-hover:text-primary transition-colors" />
+            </a>
+          </div>
 
           <p className="text-zinc-400 text-lg leading-relaxed max-w-xl mb-10 border-l-4 border-primary pl-6">
             {HERO_DATA.bio}
           </p>
 
           <div className="flex flex-wrap gap-4">
-            <a href="#contact" className="group flex items-center gap-2 bg-primary text-black px-8 py-4 rounded-full font-bold hover:bg-green-300 transition-all shadow-[0_0_20px_rgba(74,222,128,0.3)]">
+            <a 
+              href="#contact" 
+              onClick={scrollToContact}
+              className="group flex items-center gap-2 bg-primary text-black px-8 py-4 rounded-full font-bold hover:bg-green-300 transition-all shadow-[0_0_20px_rgba(74,222,128,0.3)]"
+            >
               Contact Me
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
@@ -60,16 +92,12 @@ const Hero: React.FC = () => {
               {/* Main Image Container */}
               <div className="absolute inset-0 bg-zinc-800 overflow-hidden border-4 border-zinc-700 rounded-3xl hexagon-clip">
                 {/* 
-                   IMPORTANT: Ensure a file named 'hero.jpg' exists in your public directory.
+                   IMPORTANT: Ensure a file named 'hero.jpg' exists in the 'components' directory.
                 */}
                 <img 
-                  src="/hero.jpg" 
+                  src="/components/hero.jpg"
                   alt="Michael David Robinston"
                   className="w-full h-full object-cover filter hover:brightness-110 transition-all duration-700"
-                  onError={(e) => {
-                    // Fallback if image is missing
-                    e.currentTarget.src = "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2544&auto=format&fit=crop";
-                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent"></div>
               </div>
