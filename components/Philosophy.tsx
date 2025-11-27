@@ -52,11 +52,8 @@ const Philosophy: React.FC = () => {
           >
             <div className="relative z-10 rounded-2xl overflow-hidden border border-zinc-800 bg-card shadow-2xl p-2">
                <div className="rounded-xl overflow-hidden relative">
-                 {/* 
-                   IMPORTANT: Ensure a file named 'philosophy.jpg' exists in the 'components' directory.
-                 */}
                  <img 
-                   src="/components/philosophy.jpg" 
+                   src="philosophy.jpg"
                    alt="Michael Presentation" 
                    className="w-full h-auto object-cover filter hover:brightness-110 transition-all duration-700"
                  />

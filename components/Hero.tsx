@@ -122,11 +122,8 @@ const Hero: React.FC = () => {
                 className="absolute inset-0 bg-zinc-800 overflow-hidden border-4 border-zinc-700 rounded-3xl hexagon-clip z-10"
                 whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
               >
-                {/* 
-                   IMPORTANT: Ensure a file named 'hero.jpg' exists in the 'components' directory.
-                */}
                 <img 
-                  src="/components/hero.jpg"
+                  src="hero.jpg"
                   alt="Michael David Robinston"
                   className="w-full h-full object-cover filter hover:brightness-110 transition-all duration-700"
                 />
